@@ -18,8 +18,8 @@ export type ProductColumn = {
 
 export const columns: ColumnDef<ProductColumn>[] = [
   {
-    accessorKey: 'label',
-    header: 'Label',
+    accessorKey: 'name',
+    header: 'Name',
   },
   {
     accessorKey: 'isArchived',
@@ -44,15 +44,15 @@ export const columns: ColumnDef<ProductColumn>[] = [
   {
     accessorKey: 'color',
     header: 'Color',
-    cell: ({ row }) => {
+    cell: ({ row }) => (
       <div className="flex items-center gap-x-2">
         {row.original.color}
         <div
           className="h-6 w-6 rounded-full border"
           style={{ backgroundColor: row.original.color }}
         ></div>
-      </div>;
-    },
+      </div>
+    ),
   },
   {
     accessorKey: 'createdAt',

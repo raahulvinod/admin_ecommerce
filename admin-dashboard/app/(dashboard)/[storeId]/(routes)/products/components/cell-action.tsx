@@ -14,12 +14,12 @@ import {
   DropdownMenuLabel,
 } from '@/components/ui/dropdown-menu';
 
-import { BillboardColumn } from './columns';
+import { ProductColumn } from './columns';
 import { Button } from '@/components/ui/button';
 import { AlertModal } from '@/components/modals/alert-modal';
 
 interface CellActionProps {
-  data: BillboardColumn;
+  data: ProductColumn;
 }
 
 export const CellAction: React.FC<CellActionProps> = ({ data }) => {
@@ -31,17 +31,17 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
 
   const onCopy = (id: string) => {
     navigator.clipboard.writeText(id);
-    toast.success('Billboard Id copied to the clipboard.');
+    toast.success('Product Id copied to the clipboard.');
   };
 
   const onDelete = async () => {
     try {
       setLoading(true);
-      await axios.delete(`/api/${params.storeId}/billboards/${data.id}`);
+      await axios.delete(`/api/${params.storeId}/products/${data.id}`);
       router.refresh();
-      toast.success('Billboard deleted.');
+      toast.success('Product deleted.');
     } catch (error) {
-      toast.error('Make sure you removed all products and categories first.');
+      toast.error('Something went wrong.');
       setLoading(false);
     } finally {
       setLoading(false);
@@ -68,7 +68,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
           <DropdownMenuItem
             onClick={() =>
-              router.push(`/${params.storeId}/billboards/${data.id}`)
+              router.push(`/${params.storeId}/products/${data.id}`)
             }
           >
             <Edit className="mr-2 h-4 w-4" />
