@@ -11,8 +11,8 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Brandistic Admin',
-  description: 'Brandistic Admin',
+  title: 'Store dashboard',
+  description: 'Control your multiple stores',
 };
 
 export default function RootLayout({
